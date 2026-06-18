@@ -1,6 +1,6 @@
 resource "aws_key_pair" "ec2_key" {
   key_name   = "EC2-Key-terraform"
-  public_key = file("${path.module}/../../.github/workflows/sshkey/EC2KeyDevOpsProject16062026.pub")
+  public_key = file("${path.module}/../.github/workflows/sshkey/EC2KeyDevOpsProject16062026.pub")
 }
 
 resource "aws_instance" "website_server" {
