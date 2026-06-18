@@ -73,6 +73,12 @@ jobs:
         run: terraform apply -auto-approve tfplan
         if: github.event.inputs.apply == 'true'
 
+      # Empty bucket
+      - name: Empty S3 bucket
+        run: |
+          BUCKET=terraform-state-tomaslima
+          aws s3 rm s3://$BUCKET --recursive
+
       # Using Terraform destroy to destroy all infra created
       - name: Terraform Plan Destroy  
         run: terraform plan --destroy -out tfplan
