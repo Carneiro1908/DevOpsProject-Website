@@ -1,15 +1,3 @@
-resource "aws_iam_openid_connect_provider" "github" {
-  url = "https://token.actions.githubusercontent.com"
-
-  client_id_list = [
-    "sts.amazonaws.com"
-  ]
-
-  thumbprint_list = [
-    "6938fd4d98bab03faadb97b34396831e3780aea1"
-  ]
-}
-
 resource "aws_iam_role" "ec2_ecr_role" {
   name = "ec2-ecr-readonly-role"
   
@@ -47,7 +35,7 @@ resource "aws_iam_role" "ecr_full_access" {
       Effect = "Allow"
 
       Principal = {
-        Federated = aws_iam_openid_connect_provider.github.arn
+        Service = "ec2.amazonaws.com"
       }
 
       Action = "sts:AssumeRoleWithWebIdentity"
