@@ -15,7 +15,7 @@ resource "aws_instance" "website_server" {
 
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
-  #user_data = file("user_data.sh")
+  user_data = file("../bash/user_data.sh")
 
   tags = {
     Name        = "website-server"
