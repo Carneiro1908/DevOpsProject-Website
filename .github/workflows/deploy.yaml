@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug
+      - name: DebugKeyStats
         run: |
           echo "PUBLIC_IP=[$PUBLIC_IP]"
           echo "KEY SIZE=$(echo "$INSTANCE_KEY" | wc -c)"
