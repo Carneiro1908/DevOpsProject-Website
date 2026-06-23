@@ -52,6 +52,25 @@ jobs:
           echo "$INSTANCE_KEY" > key
           head -n 3 key
 
+      - name: Validate SSH key
+        run: |
+          printf "%s" "$INSTANCE_KEY" > key
+          chmod 400 key
+
+          echo "Tamanho:"
+          wc -c key
+
+          echo "Primeira linha:"
+          head -n 1 key
+
+          echo "Última linha:"
+          tail -n 1 key
+
+          echo "Validando..."
+          ssh-keygen -y -f key
+
+          ssh-keygen -y -f key
+
       - name: deploy ec2 ssh
         run: |
           printf "%s" "$INSTANCE_KEY" > key
