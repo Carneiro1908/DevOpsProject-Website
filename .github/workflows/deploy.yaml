@@ -49,9 +49,9 @@ jobs:
 
       - name: deploy ec2 ssh
         run: |
-          echo "$INSTANCE_KEY" > key.pem
-          chmod 400 key.pem
-          ssh -i key.pem -o StrictHostKeyChecking=no ec2-user@$PUBLIC_IP << EOF
+          echo "$INSTANCE_KEY" > EC2KeyDevOpsProject16062026
+          chmod 400 EC2KeyDevOpsProject16062026
+          ssh -i EC2KeyDevOpsProject16062026 -o StrictHostKeyChecking=no ec2-user@$PUBLIC_IP << EOF
             aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 547320736290.dkr.ecr.eu-north-1.amazonaws.com
             docker pull 547320736290.dkr.ecr.eu-north-1.amazonaws.com/bar:v1.0
             docker stop site || true
@@ -61,4 +61,4 @@ jobs:
 
           EOF
 
-          rm key.pem
+          rm EC2KeyDevOpsProject16062026
