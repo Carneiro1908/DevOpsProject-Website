@@ -46,6 +46,11 @@ jobs:
         run: |
           echo "PUBLIC_IP=[$PUBLIC_IP]"
           echo "KEY SIZE=$(echo "$INSTANCE_KEY" | wc -c)"
+          
+      - name: Debug Key
+        run: |
+          echo "$INSTANCE_KEY" > key
+          head -n 3 key
 
       - name: deploy ec2 ssh
         run: |
