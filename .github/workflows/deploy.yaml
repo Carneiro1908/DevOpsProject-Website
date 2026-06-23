@@ -37,8 +37,8 @@ jobs:
     name: deploy_ec2
     needs: job1
     env:
-      INSTANCE_KEY: ${{secrets.INSTANCE_KEY}}
-      PUBLIC_IP: ${{secrets.PUBLIC_IP}}
+      INSTANCE_KEY: ${{vars.INSTANCE_KEY}}
+      PUBLIC_IP: ${{vars.PUBLIC_IP}}
     runs-on: ubuntu-latest
 
     steps:
