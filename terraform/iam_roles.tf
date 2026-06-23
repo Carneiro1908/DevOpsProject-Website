@@ -35,20 +35,20 @@ resource "aws_iam_role" "ecr_full_access" {
       Effect = "Allow"
 
       Principal = {
-        Service = "ec2.amazonaws.com"
+        Federated = "arn:aws:iam::547320736290:oidc-provider/token.actions.githubusercontent.com"
       }
 
       Action = "sts:AssumeRoleWithWebIdentity"
 
       Condition = {
-          StringEquals = {
-            "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
-          }
-
-          StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:Carneiro1908/DevOpsProject-Website:*"
-          }
+        StringEquals = {
+          "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
         }
+
+        StringLike = {
+          "token.actions.githubusercontent.com:sub" = "repo:Carneiro1908/DevOpsProject-Website:*"
+        }
+      }
     }]
   })
 }
