@@ -37,15 +37,16 @@ jobs:
     name: deploy_ec2
     needs: job1
     env:
-      INSTANCE_KEY: ${{secrets.INSTANCE_KEY}}
-      PUBLIC_IP: ${{secrets.PUBLIC_IP}}
+      INSTANCE_KEY: ${{variables.INSTANCE_KEY}}
+      PUBLIC_IP: ${{variables.PUBLIC_IP}}
     runs-on: ubuntu-latest
 
     steps:
       - name: Debug
         run: |
           echo "PUBLIC_IP=[$PUBLIC_IP]"
-          
+          echo "KEY SIZE=$(echo "$INSTANCE_KEY" | wc -c)"
+
       - name: deploy ec2 ssh
         run: |
           echo "$INSTANCE_KEY" > key
