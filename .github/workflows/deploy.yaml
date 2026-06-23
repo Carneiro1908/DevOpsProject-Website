@@ -42,6 +42,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug
+        run: |
+          echo "PUBLIC_IP=[$PUBLIC_IP]"
+          
       - name: deploy ec2 ssh
         run: |
           echo "$INSTANCE_KEY" > key
