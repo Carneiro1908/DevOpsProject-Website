@@ -50,10 +50,10 @@ jobs:
           chmod 400 EC2KeyDevOpsProject16062026
           ssh -i EC2KeyDevOpsProject16062026 -o StrictHostKeyChecking=no ec2-user@$PUBLIC_IP << EOF
             aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 547320736290.dkr.ecr.eu-north-1.amazonaws.com
-            docker pull 547320736290.dkr.ecr.eu-north-1.amazonaws.com/bar:v1.0
+            docker pull 547320736290.dkr.ecr.eu-north-1.amazonaws.com/bar
             docker stop site || true
             docker rm site || true
-            docker run -d -p 80:80 --name site 547320736290.dkr.ecr.eu-north-1.amazonaws.com/bar:v1.0
+            docker run -d -p 80:80 --name site 547320736290.dkr.ecr.eu-north-1.amazonaws.com/bar
             docker ps
 
           EOF
