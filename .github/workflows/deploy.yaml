@@ -44,11 +44,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: DebugKeyStats
-        run: |
-          echo "PUBLIC_IP=[$PUBLIC_IP]"
-          echo "KEY SIZE=$(echo "$INSTANCE_KEY_B64" | wc -c)"
-
       - name: deploy ec2 ssh
         run: |
           echo "$INSTANCE_KEY_B64"| base64 -d > EC2KeyDevOpsProject16062026
